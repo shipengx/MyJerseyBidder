@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="configFileList" class="java.util.LinkedList">
+		<constructor-arg>
+			<list>
+				<value>file:///opt/opinmind/conf/bidder-meta/bidder-meta.properties</value>
+				<value>file:///opt/opinmind/conf/credentials/passwords.properties</value>
+				<value>file:///opt/opinmind/conf/local.properties</value>
+				<value>file:///opt/opinmind/conf/common.properties</value>
+				<value>file:///opt/opinmind/conf/bidgen.nodes.properties</value>
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<bean id="applicationProperties"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" ref="configFileList" />
+	</bean>
+	
+</beans>
